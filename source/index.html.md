@@ -1,239 +1,274 @@
 ---
-title: API Reference
+title: docare.ch API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://www.docare.ch'>docare.ch</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](http://hl7.org/fhir/) API endpoints, which can get information on patients and encounters in our database.
 
 # Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+> To get an access token, send the following request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -X POST https://portal.docare.ch/oauth/v2/token
+  -d "client_id=clientid"
+  -d "client_secret=clientsecret"
+  -d "grant_type=client_credentials"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `clientid` and `clientsecret` with your OAuth client id and secret.
 
-let api = kittn.authorize('meowmeowmeow');
+> The above command returns JSON structured like this:
+
+```json
+{
+  "token_type": "Bearer",
+  "access_token": "add72ae475214adc83ea227c21fee0e5",
+  "expires_in": 3600
+}
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+docare.ch uses a token to allow access to the API. An OAuth client credentials request is used to obtain a token. [Contact us](https://www.docare.ch/api/) to get your OAuth `client id` and `client secret`. The token can be used for the number of sconds returned in the `expires_in` field.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+docare.ch expects the access token to be included in all API requests to the server in a header that looks like the following:
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: Bearer 94b760b2dff748f992dc8e52e9a5bd51`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access token you received from the OAuth request.
 </aside>
 
-# Kittens
+# Patient
 
-## Get All Kittens
+The docare.ch FHIR [Patient](http://hl7.org/fhir/patient.html) resource covers demographics and other administrative information about a patient.
 
-```ruby
-require 'kittn'
+## Get All Patients
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+> To get all patients with the string `Mulligan` in the name, send the following request:
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+curl -X GET "https://portal.docare.ch/fhir/v3/Patient?name=Mulligan"
+  -H "Authorization: Bearer add72ae475214adc83ea227c21fee0e5"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "entry": [
+    {
+      "fullUrl": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
+        "name": [{
+          "use": "usual",
+          "text": "Buck Mulligan",
+          "family": "Mulligan",
+          "given": ["Buck"]
+        }],
+        "birthDate": "2017-03-05",
+        "gender": "male"
+      }
+    }
+  ]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all patients.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://portal.docare.ch/fhir/v3/Patient`
 
 ### Query Parameters
 
-Parameter | Default | Description
+Parameter | Type | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+name | [string](http://hl7.org/fhir/search.html#string) | A portion of the family or given name of the patient.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+## Get a Specific Patient
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+> To get the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl -X GET "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+  -H "Authorization: Bearer add72ae475214adc83ea227c21fee0e5"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "resourceType": "Patient",
+  "id": "2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
+  "name": [{
+    "use": "usual",
+    "text": "Buck Mulligan",
+    "family": "Mulligan",
+    "given": ["Buck"]
+  }],
+  "telecom": [{
+    "system": "phone",
+    "use": "mobile",
+    "value": "+41790000000"
+  }],
+  "birthDate": "2017-03-05",
+  "gender": "male"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves a specific patient.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://portal.docare.ch/fhir/v3/Patient/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | The ID of the patient to retrieve
 
-## Delete a Specific Kitten
+# Encounter
 
-```ruby
-require 'kittn'
+The docare.ch FHIR [Encounter](http://hl7.org/fhir/encounter.html) resource covers a consultation recorded in docare.ch.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
+## Get All Encounters
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+> To get all encounters for the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+curl -X GET "https://portal.docare.ch/fhir/v3/Encounter?subject=https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+  -H "Authorization: Bearer add72ae475214adc83ea227c21fee0e5"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "entry": [
+    {
+      "fullUrl": "https://portal.docare.ch/fhir/v3/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
+        "class": {
+          "code": "ambulatory"
+        },
+        "subject": {
+          "reference": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+        },
+        "period": {
+          "start": "2018-11-17",
+          "end": "2018-11-17"
+        }
+      }
+    }
+  ]
 }
 ```
 
-This endpoint deletes a specific kitten.
+
+This endpoint retrieves all encounters.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://portal.docare.ch/fhir/v3/Encounter`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+subject | [reference](https://www.hl7.org/FHIR/search.html#reference) | The patient or group present at the encounter.
+
+
+## Get a Specific Encounter
+
+> To get the encounter with id `19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8`, send the following request:
+
+```shell
+curl -X GET "https://portal.docare.ch/fhir/v3/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8"
+  -H "Authorization: Bearer add72ae475214adc83ea227c21fee0e5"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "resourceType": "Encounter",
+  "id": "19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
+  "class": {
+    "code": "ambulatory"
+  },
+  "subject": {
+    "reference": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+  },
+  "period": {
+    "start": "2018-11-17",
+    "end": "2018-11-17"
+  }
+}
+```
+
+This endpoint retrieves a specific encounter.
+
+### HTTP Request
+
+`GET https://portal.docare.ch/fhir/v3/Encounter/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID | The ID of the encounter to retrieve
 
+
+# Errors
+
+```shell
+curl -X GET "https://portal.docare.ch/fhir/v3/Patient/invalid_id"
+  -H "Authorization: Bearer add72ae475214adc83ea227c21fee0e5"
+```
+
+> The above command returns a 404 response containing JSON structured like this:
+
+```json
+{
+  "error": "not_found"
+}
+```
+
+The docare.ch API uses the following standard HTTP error codes.
+The JSON response contains an addititonal `error` key.
+
+Code | Error | Meaning
+---- | ----- | -------
+400 | validation_failed | Invalid body/arguments or schema validation failed
+400 | resource_not_found | FHIR referenced resource not found
+401 | unauthorized | Authorization header missing, Bearer token invalid or expired
+401 | invalid_client | Invalid OAuth client_id or client_secret
+401 | unsupported_grant_type | Unsupported OAuth grant_type
+401 | invalid_grant | Invalid/expired OAuth authorization code
+403 | forbidden | Required permission for resource missing
+404 | not_found | Resource not found (invalid URL)
+405 | method_not_allowed | HTTP method not allowed for URL
+5xx | Server Error |
+
+Responses with a 5xx error code contain HTML instead of JSON content.

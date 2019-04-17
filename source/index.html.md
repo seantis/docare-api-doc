@@ -12,7 +12,7 @@ search: true
 
 # Introduction
 
-Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](http://hl7.org/fhir/) API endpoints, which can get information on patients and encounters in our database.
+Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](http://hl7.org/fhir/STU3/) API endpoints, which can get information on patients and encounters in our database.
 
 # Authentication
 

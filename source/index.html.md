@@ -538,6 +538,34 @@ period | [Period](http://hl7.org/fhir/STU3/datatypes.html#Period) | The start an
 The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
 </aside>
 
+## Delete an Encounter
+
+> To delete the encounter with id `931a68c2-62ca-470e-b1f5-a590577d2936`, send the following request:
+
+```http
+DELETE /fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
+Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Host: https://portal.docare.ch
+```
+
+> The above request returns the following response:
+
+```http
+HTTP/1.1 204 No Content
+```
+
+This endpoint deletes an encounter.
+
+### HTTP Request
+
+`DELETE /fhir/v3/Encounter/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the encounter to delete
+
 
 # Errors
 

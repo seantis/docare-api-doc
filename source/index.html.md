@@ -53,9 +53,11 @@ docare.ch expects the access token to be included in all API requests to the ser
 You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access token you received from the OAuth request.
 </aside>
 
+
 # Patient
 
-The docare.ch FHIR [http://hl7.org/fhir/STU3/patient.html) resource covers demographics and other administrative information about a patient.
+The docare.ch FHIR [Patient](http://hl7.org/fhir/STU3/patient.html) resource covers demographics and other administrative information about a patient.
+
 
 ## Create a Patient
 
@@ -125,6 +127,7 @@ telecom | [ContactPoint](http://hl7.org/fhir/STU3/datatypes.html#ContactPoint) |
 birthDate | [date](http://hl7.org/fhir/STU3/datatypes.html#date) | The date of birth for the patient
 gender | [code](http://hl7.org/fhir/STU3/datatypes.html#code) | Gender of the patient: male, female
 
+
 ## Get All Patients
 
 > To get all patients with the string `Mulligan` in the name, send the following request:
@@ -177,6 +180,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 name | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | A portion of the family or given name of the patient.
 
+
 ## Get a Specific Patient
 
 > To get the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
@@ -223,6 +227,7 @@ This endpoint retrieves a specific patient.
 Parameter | Description
 --------- | -----------
 ID | The ID of the patient to retrieve
+
 
 ## Update a Patient
 
@@ -301,9 +306,11 @@ gender | [code](http://hl7.org/fhir/STU3/datatypes.html#code) | Gender of the pa
 The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
 </aside>
 
+
 # Encounter
 
 The docare.ch FHIR [Encounter](http://hl7.org/fhir/STU3/encounter.html) resource covers a consultation recorded in docare.ch.
+
 
 ## Create an Encounter
 
@@ -368,6 +375,7 @@ resourceType | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | "Encou
 subject | [Reference](http://hl7.org/fhir/STU3/references.html) | The patient present at the encounter
 period | [Period](http://hl7.org/fhir/STU3/datatypes.html#Period) | The start and end time of the encounter
 
+
 ## Get All Encounters
 
 > To get all encounters for the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
@@ -409,7 +417,6 @@ Content-Type: application/json
   ]
 }
 ```
-
 
 This endpoint retrieves all encounters.
 
@@ -469,6 +476,69 @@ Parameter | Description
 ID | The ID of the encounter to retrieve
 
 
+## Update an Encounter
+
+> To update the encounter with id `931a68c2-62ca-470e-b1f5-a590577d2936`, send the following request:
+
+```http
+POST /fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
+Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Content-Type: application/json
+Host: https://portal.docare.ch
+
+{
+  "resourceType": "Encounter",
+  "period": {
+    "start": "2018-11-12",
+    "end": "2018-11-12"
+  }
+}
+```
+
+> The above request returns the following response:
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+Location: https://portal.docare.ch/fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
+
+{
+  "resourceType": "Encounter",
+  "id": "931a68c2-62ca-470e-b1f5-a590577d2936",
+  "subject": {
+    "reference": "https://portal.docare.ch/fhir/v3/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
+  },
+  "period": {
+    "start": "2018-11-12",
+    "end": "2018-11-12"
+  },
+}
+```
+
+This endpoint updates all encounter data.
+
+### HTTP Request
+
+`POST /fhir/v3/Encounter/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the encounter to update
+
+### JSON Attributes
+
+Name | Type | Description
+--------- | ------- | -----------
+resourceType | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | "Encounter" constant
+period | [Period](http://hl7.org/fhir/STU3/datatypes.html#Period) | The start and end time of the encounter
+
+<aside class="notice">
+The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
+</aside>
+
+
 # Errors
 
 ```http
@@ -477,7 +547,7 @@ Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```
 
-> The above request returns a 404 response containing JSON structured like this:
+> The above request returns the following 404 response:
 
 ```http
 HTTP/1.1 404 Not Found

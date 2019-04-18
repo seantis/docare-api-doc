@@ -307,6 +307,35 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </aside>
 
 
+## Delete a Patient
+
+> To delete the patient with id `5b9613fc-43ef-4f90-bf10-9cbe7451fe02`, send the following request:
+
+```http
+DELETE /fhir/v3/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
+Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Host: https://portal.docare.ch
+```
+
+> The above request returns the following response:
+
+```http
+HTTP/1.1 204 No Content
+```
+
+This endpoint deletes a patient.
+
+### HTTP Request
+
+`DELETE /fhir/v3/Patient/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the patient to delete
+
+
 # Encounter
 
 The docare.ch FHIR [Encounter](http://hl7.org/fhir/STU3/encounter.html) resource covers a consultation recorded in docare.ch.
@@ -537,6 +566,7 @@ period | [Period](http://hl7.org/fhir/STU3/datatypes.html#Period) | The start an
 <aside class="notice">
 The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
 </aside>
+
 
 ## Delete an Encounter
 

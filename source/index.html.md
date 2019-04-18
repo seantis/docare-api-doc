@@ -20,11 +20,12 @@ Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](htt
 
 ```http
 POST /oauth/v2/token HTTP/1.1
+Content-Type: multipart/form-data
 Host: https://portal.docare.ch
 
-client_id=clientid
-client_secret=clientsecret
-grant_type=client_credentials
+client_id: "clientid"
+client_secret: "clientsecret"
+grant_type: "client_credentials"
 ```
 
 > Make sure to replace `clientid` and `clientsecret` with your OAuth client id and secret.

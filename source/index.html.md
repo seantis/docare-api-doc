@@ -224,6 +224,83 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the patient to retrieve
 
+## Update a Patient
+
+```http
+POST /fhir/v3/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
+Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Content-Type: application/json
+Host: https://portal.docare.ch
+
+{
+  "resourceType": "Patient",
+  "name": [{
+    "use": "usual",
+    "text": "Buck Mulligan",
+    "family": "Mulligan",
+    "given": ["Buck"]
+  }],
+  "telecom": [{
+    "system": "phone",
+    "use": "mobile",
+    "value": "+41790000000"
+  }],
+  "birthDate": "2017-03-05",
+  "gender": "male"
+}
+```
+
+> The above request returns the following response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "resourceType": "Patient",
+  "id": "5b9613fc-43ef-4f90-bf10-9cbe7451fe02",
+  "name": [{
+    "use": "usual",
+    "text": "Buck Mulligan",
+    "family": "Mulligan",
+    "given": ["Buck"]
+  }],
+  "telecom": [{
+    "system": "phone",
+    "use": "mobile",
+    "value": "+41790000000"
+  }],
+  "birthDate": "2017-03-05",
+  "gender": "male"
+}
+```
+
+This endpoint updates all patient data.
+
+### HTTP Request
+
+`POST /fhir/v3/Patient/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the patient to update
+
+### JSON Attributes
+
+Name | Type | Description
+--------- | ------- | -----------
+resourceType | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | "Patient" constant
+name | [HumanName](http://hl7.org/fhir/STU3/datatypes.html#HumanName) | Name(s) associated with the patient
+telecom | [ContactPoint](http://hl7.org/fhir/STU3/datatypes.html#ContactPoint) | Contact detail(s) for the patient
+birthDate | [date](http://hl7.org/fhir/STU3/datatypes.html#date) | The date of birth for the patient
+gender | [code](http://hl7.org/fhir/STU3/datatypes.html#code) | Gender of the patient: male, female
+
+<aside class="notice">
+The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
+</aside>
+
 # Encounter
 
 The docare.ch FHIR [Encounter](http://hl7.org/fhir/STU3/encounter.html) resource covers a consultation recorded in docare.ch.

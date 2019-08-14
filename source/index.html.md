@@ -597,6 +597,165 @@ Parameter | Description
 ID | The ID of the encounter to delete
 
 
+# QuestionnaireResponse
+
+The docare.ch FHIR [QuestionnaireResponse](https://www.hl7.org/fhir/questionnaireresponse.html) resource contains all the answers from the patient's questionnaire.
+
+
+## Get All Questionnaire Responses
+
+> To get all questionnaire responses for the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
+
+```http
+GET /fhir/v4/QuestionnaireResponse?subject=https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
+Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Host: https://portal.docare.ch
+```
+
+> The above request returns the following response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "entry": [
+    {
+      "fullUrl": "https://portal.docare.ch/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d605cd56-c554-4cbd-9c6b-8d7b16903443",
+        "status": "completed",
+        "questionnaire": "https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology",
+        "authored": "2018-04-25T14:15:33.811244+00:00",
+        "subject": {
+          "reference": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+        },
+        "encounter": {
+          "reference": "https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"
+        }
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves all questionnaire responses for a given patient.
+
+### HTTP Request
+
+`GET /fhir/v4/QuestionnaireResponse`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+subject | [reference](http://hl7.org/fhir/STU3/references.html) | The patient of the questions.
+
+
+## Get a Specific Questionnaire Response
+
+> To get the questionnaire response with id `d605cd56-c554-4cbd-9c6b-8d7b16903443`, send the following request:
+
+```http
+GET /fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443 HTTP/1.1
+Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Host: https://portal.docare.ch
+```
+
+> The above request returns the following response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "d605cd56-c554-4cbd-9c6b-8d7b16903443",
+  "meta": {
+    "lastUpdated": "2019-07-12T09:16:03.157753+00:00"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Konsultationsgrund: Allergie. Beschwerden seit 2 Wochen. Bisherige Abkl&#228;rungen: Allergietest.</p><p>Keine Dauerbeschwerden. Beschwerden treten nicht bei bestimmten T&#228;tigkeiten auf.</p></div>"
+  },
+  "status": "completed",
+  "authored": "2019-07-12T09:16:03.157753+00:00",
+  "subject": {
+    "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+  },
+  "encounter": {
+    "reference": "https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"
+  },
+  "questionnaire": "https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology",
+  "item": [
+    {
+      "linkId": "ailment",
+      "answer": [
+        {
+          "valueCoding": {
+            "code": "ailment_allergy"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "ailment_duration",
+      "answer": [
+        {
+          "valueQuantity": {
+            "value": 2,
+            "unit": "wk"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "permanent_ailment",
+      "answer": [
+        {
+          "valueBoolean": false
+        }
+      ]
+    },
+    {
+      "linkId": "ailment_activity",
+      "answer": [
+        {
+          "valueBoolean": false
+        }
+      ]
+    },
+    {
+      "linkId": "past_investigations",
+      "answer": [
+        {
+          "valueCoding": {
+            "code": "past_investigations_allergy_test"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint retrieves a specific questionnaire response.
+
+### HTTP Request
+
+`GET /fhir/v4/QuestionnaireResponse/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the questionnaire response to retrieve
+
+
 # Errors
 
 ```http

@@ -334,7 +334,6 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
     </span><span class="s2">"use"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usual"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buck Mulligan"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mulligan"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"given"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Buck"</span><span class="p">]</span><span class="w">
   </span><span class="p">}],</span><span class="w">
@@ -650,6 +649,9 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -671,7 +673,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in-progress"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ambulatory"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
@@ -737,7 +739,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
         </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ambulatory"</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
@@ -786,7 +788,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ambulatory"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">

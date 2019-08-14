@@ -265,6 +265,17 @@
               </ul>
           </li>
           <li>
+            <a href="#questionnaireresponse" class="toc-h1 toc-link" data-title="QuestionnaireResponse">QuestionnaireResponse</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-questionnaire-responses" class="toc-h2 toc-link" data-title="Get All Questionnaire Responses">Get All Questionnaire Responses</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-questionnaire-response" class="toc-h2 toc-link" data-title="Get a Specific Questionnaire Response">Get a Specific Questionnaire Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -901,6 +912,162 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <tr>
 <td>ID</td>
 <td>The ID of the encounter to delete</td>
+</tr>
+</tbody></table>
+<h1 id='questionnaireresponse'>QuestionnaireResponse</h1>
+<p>The docare.ch FHIR <a href="https://www.hl7.org/fhir/questionnaireresponse.html">QuestionnaireResponse</a> resource contains all the answers from the patient&#39;s questionnaire.</p>
+<h2 id='get-all-questionnaire-responses'>Get All Questionnaire Responses</h2>
+<blockquote>
+<p>To get all questionnaire responses for the patient with id <code>2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</code>, send the following request:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/QuestionnaireResponse?subject=https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bundle"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"searchset"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"fullUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d605cd56-c554-4cbd-9c6b-8d7b16903443"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"authored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-25T14:15:33.811244+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"encounter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all questionnaire responses for a given patient.</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET /fhir/v4/QuestionnaireResponse</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subject</td>
+<td><a href="http://hl7.org/fhir/STU3/references.html">reference</a></td>
+<td>The patient of the questions.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-questionnaire-response'>Get a Specific Questionnaire Response</h2>
+<blockquote>
+<p>To get the questionnaire response with id <code>d605cd56-c554-4cbd-9c6b-8d7b16903443</code>, send the following request:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+</code></pre>
+<blockquote>
+<p>The above request returns the following response:</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QuestionnaireResponse"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d605cd56-c554-4cbd-9c6b-8d7b16903443"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-12T09:16:03.157753+00:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"div"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div xmlns=</span><span class="se">\"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="se">\"</span><span class="s2">&gt;&lt;p&gt;Konsultationsgrund: Allergie. Beschwerden seit 2 Wochen. Bisherige Abkl&amp;#228;rungen: Allergietest.&lt;/p&gt;&lt;p&gt;Keine Dauerbeschwerden. Beschwerden treten nicht bei bestimmten T&amp;#228;tigkeiten auf.&lt;/p&gt;&lt;/div&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-12T09:16:03.157753+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"encounter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"linkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ailment"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"valueCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ailment_allergy"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"linkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ailment_duration"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"valueQuantity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wk"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"linkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"permanent_ailment"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"valueBoolean"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"linkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ailment_activity"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"valueBoolean"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"linkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"past_investigations"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"valueCoding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"past_investigations_allergy_test"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific questionnaire response.</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET /fhir/v4/QuestionnaireResponse/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the questionnaire response to retrieve</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v3/Patient/invalid_id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>

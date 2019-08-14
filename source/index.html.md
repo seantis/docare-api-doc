@@ -352,6 +352,9 @@ Host: https://portal.docare.ch
 
 {
   "resourceType": "Encounter",
+  "class": {
+    "code": "AMB"
+  },
   "subject": {
     "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
   },
@@ -374,7 +377,7 @@ Location: https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a59
   "id": "931a68c2-62ca-470e-b1f5-a590577d2936",
   "status": "in-progress",
   "class": {
-      "code": "ambulatory"
+    "code": "AMB"
   },
   "subject": {
     "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
@@ -431,7 +434,7 @@ Content-Type: application/json
         "resourceType": "Encounter",
         "id": "19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
         "class": {
-          "code": "ambulatory"
+          "code": "AMB"
         },
         "subject": {
           "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
@@ -479,7 +482,7 @@ Content-Type: application/json
   "resourceType": "Encounter",
   "id": "19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
   "class": {
-    "code": "ambulatory"
+    "code": "AMB"
   },
   "subject": {
     "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"

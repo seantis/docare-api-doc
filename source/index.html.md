@@ -12,7 +12,7 @@ search: true
 
 # Introduction
 
-Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](http://hl7.org/fhir/STU3/) API endpoints, which can get information on patients and encounters in our database.
+Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](http://hl7.org/fhir/) API endpoints, which can get information on patients and encounters in our database.
 
 # Authentication
 
@@ -56,7 +56,7 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 
 # Patient
 
-The docare.ch FHIR [Patient](http://hl7.org/fhir/STU3/patient.html) resource covers demographics and other administrative information about a patient.
+The docare.ch FHIR [Patient](http://hl7.org/fhir/patient.html) resource covers demographics and other administrative information about a patient.
 
 
 ## Create a Patient
@@ -121,11 +121,11 @@ This endpoint creates a new patient.
 
 Name | Type | Description
 --------- | ------- | -----------
-resourceType | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | "Patient" constant
-name | [HumanName](http://hl7.org/fhir/STU3/datatypes.html#HumanName) | Name(s) associated with the patient
-telecom | [ContactPoint](http://hl7.org/fhir/STU3/datatypes.html#ContactPoint) | Contact detail(s) for the patient
-birthDate | [date](http://hl7.org/fhir/STU3/datatypes.html#date) | The date of birth for the patient
-gender | [code](http://hl7.org/fhir/STU3/datatypes.html#code) | Gender of the patient: male, female
+resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Patient" constant
+name | [HumanName](http://hl7.org/fhir/datatypes.html#HumanName) | Name(s) associated with the patient
+telecom | [ContactPoint](http://hl7.org/fhir/datatypes.html#ContactPoint) | Contact detail(s) for the patient
+birthDate | [date](http://hl7.org/fhir/datatypes.html#date) | The date of birth for the patient
+gender | [code](http://hl7.org/fhir/datatypes.html#code) | Gender of the patient: male, female
 
 
 ## Get All Patients
@@ -178,7 +178,7 @@ This endpoint retrieves all patients.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-name | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | A portion of the family or given name of the patient.
+name | [string](http://hl7.org/fhir/datatypes.html#string) | A portion of the family or given name of the patient.
 
 
 ## Get a Specific Patient
@@ -296,11 +296,11 @@ ID | The ID of the patient to update
 
 Name | Type | Description
 --------- | ------- | -----------
-resourceType | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | "Patient" constant
-name | [HumanName](http://hl7.org/fhir/STU3/datatypes.html#HumanName) | Name(s) associated with the patient
-telecom | [ContactPoint](http://hl7.org/fhir/STU3/datatypes.html#ContactPoint) | Contact detail(s) for the patient
-birthDate | [date](http://hl7.org/fhir/STU3/datatypes.html#date) | The date of birth for the patient
-gender | [code](http://hl7.org/fhir/STU3/datatypes.html#code) | Gender of the patient: male, female
+resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Patient" constant
+name | [HumanName](http://hl7.org/fhir/datatypes.html#HumanName) | Name(s) associated with the patient
+telecom | [ContactPoint](http://hl7.org/fhir/datatypes.html#ContactPoint) | Contact detail(s) for the patient
+birthDate | [date](http://hl7.org/fhir/datatypes.html#date) | The date of birth for the patient
+gender | [code](http://hl7.org/fhir/datatypes.html#code) | Gender of the patient: male, female
 
 <aside class="notice">
 The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
@@ -338,7 +338,7 @@ ID | The ID of the patient to delete
 
 # Encounter
 
-The docare.ch FHIR [Encounter](http://hl7.org/fhir/STU3/encounter.html) resource covers a consultation recorded in docare.ch.
+The docare.ch FHIR [Encounter](http://hl7.org/fhir/encounter.html) resource covers a consultation recorded in docare.ch.
 
 
 ## Create an Encounter
@@ -400,9 +400,9 @@ This endpoint creates a new encounter.
 
 Name | Type | Description
 --------- | ------- | -----------
-resourceType | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | "Encounter" constant
-subject | [Reference](http://hl7.org/fhir/STU3/references.html) | The patient present at the encounter
-period | [Period](http://hl7.org/fhir/STU3/datatypes.html#Period) | The start and end time of the encounter
+resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Encounter" constant
+subject | [Reference](http://hl7.org/fhir/references.html) | The patient present at the encounter
+period | [Period](http://hl7.org/fhir/datatypes.html#Period) | The start and end time of the encounter
 
 
 ## Get All Encounters
@@ -457,7 +457,7 @@ This endpoint retrieves all encounters.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-subject | [reference](http://hl7.org/fhir/STU3/references.html) | The patient present at the encounter.
+subject | [reference](http://hl7.org/fhir/references.html) | The patient present at the encounter.
 
 
 ## Get a Specific Encounter
@@ -560,8 +560,8 @@ ID | The ID of the encounter to update
 
 Name | Type | Description
 --------- | ------- | -----------
-resourceType | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | "Encounter" constant
-period | [Period](http://hl7.org/fhir/STU3/datatypes.html#Period) | The start and end time of the encounter
+resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Encounter" constant
+period | [Period](http://hl7.org/fhir/datatypes.html#Period) | The start and end time of the encounter
 
 <aside class="notice">
 The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
@@ -653,7 +653,7 @@ This endpoint retrieves all questionnaire responses for a given patient.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-subject | [reference](http://hl7.org/fhir/STU3/references.html) | The patient of the questions.
+subject | [reference](http://hl7.org/fhir/references.html) | The patient of the questions.
 
 
 ## Get a Specific Questionnaire Response

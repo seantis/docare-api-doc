@@ -62,7 +62,7 @@ The docare.ch FHIR [Patient](http://hl7.org/fhir/STU3/patient.html) resource cov
 ## Create a Patient
 
 ```http
-POST /fhir/v3/Patient HTTP/1.1
+POST /fhir/v4/Patient HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
 Host: https://portal.docare.ch
@@ -90,7 +90,7 @@ Host: https://portal.docare.ch
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json
-Location: https://portal.docare.ch/fhir/v3/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02
+Location: https://portal.docare.ch/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02
 
 {
   "resourceType": "Patient",
@@ -115,7 +115,7 @@ This endpoint creates a new patient.
 
 ### HTTP Request
 
-`POST /fhir/v3/Patient`
+`POST /fhir/v4/Patient`
 
 ### JSON Attributes
 
@@ -133,7 +133,7 @@ gender | [code](http://hl7.org/fhir/STU3/datatypes.html#code) | Gender of the pa
 > To get all patients with the string `Mulligan` in the name, send the following request:
 
 ```http
-GET /fhir/v3/Patient?name=Mulligan HTTP/1.1
+GET /fhir/v4/Patient?name=Mulligan HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```
@@ -150,7 +150,7 @@ Content-Type: application/json
   "total": 1,
   "entry": [
     {
-      "fullUrl": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
+      "fullUrl": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
       "resource": {
         "resourceType": "Patient",
         "id": "2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
@@ -172,7 +172,7 @@ This endpoint retrieves all patients.
 
 ### HTTP Request
 
-`GET /fhir/v3/Patient`
+`GET /fhir/v4/Patient`
 
 ### Query Parameters
 
@@ -186,7 +186,7 @@ name | [string](http://hl7.org/fhir/STU3/datatypes.html#string) | A portion of t
 > To get the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
 
 ```http
-GET /fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
+GET /fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```
@@ -220,7 +220,7 @@ This endpoint retrieves a specific patient.
 
 ### HTTP Request
 
-`GET /fhir/v3/Patient/<ID>`
+`GET /fhir/v4/Patient/<ID>`
 
 ### URL Parameters
 
@@ -232,7 +232,7 @@ ID | The ID of the patient to retrieve
 ## Update a Patient
 
 ```http
-POST /fhir/v3/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
+POST /fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
 Host: https://portal.docare.ch
@@ -284,7 +284,7 @@ This endpoint updates all patient data.
 
 ### HTTP Request
 
-`POST /fhir/v3/Patient/<ID>`
+`POST /fhir/v4/Patient/<ID>`
 
 ### URL Parameters
 
@@ -312,7 +312,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 > To delete the patient with id `5b9613fc-43ef-4f90-bf10-9cbe7451fe02`, send the following request:
 
 ```http
-DELETE /fhir/v3/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
+DELETE /fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```
@@ -327,7 +327,7 @@ This endpoint deletes a patient.
 
 ### HTTP Request
 
-`DELETE /fhir/v3/Patient/<ID>`
+`DELETE /fhir/v4/Patient/<ID>`
 
 ### URL Parameters
 
@@ -346,7 +346,7 @@ The docare.ch FHIR [Encounter](http://hl7.org/fhir/STU3/encounter.html) resource
 > To create a new encounter for the patient with id `d0a31764-6030-4284-984e-3bd967106ea4`, send the following request:
 
 ```http
-POST /fhir/v3/Encounter HTTP/1.1
+POST /fhir/v4/Encounter HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
 Host: https://portal.docare.ch
@@ -354,7 +354,7 @@ Host: https://portal.docare.ch
 {
   "resourceType": "Encounter",
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v3/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
+    "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
   },
   "period": {
     "start": "2018-11-12",
@@ -368,7 +368,7 @@ Host: https://portal.docare.ch
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json
-Location: https://portal.docare.ch/fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
+Location: https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
 
 {
   "resourceType": "Encounter",
@@ -378,14 +378,14 @@ Location: https://portal.docare.ch/fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a59
       "code": "ambulatory"
   },
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v3/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
+    "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
   },
   "period": {
     "start": "2018-11-12",
     "end": "2018-11-12"
   },
   "serviceProvider": {
-    "reference": "https://portal.docare.ch/fhir/v3/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"
+    "reference": "https://portal.docare.ch/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"
   }
 }
 ```
@@ -394,7 +394,7 @@ This endpoint creates a new encounter.
 
 ### HTTP Request
 
-`POST /fhir/v3/Encounter`
+`POST /fhir/v4/Encounter`
 
 ### JSON Attributes
 
@@ -410,7 +410,7 @@ period | [Period](http://hl7.org/fhir/STU3/datatypes.html#Period) | The start an
 > To get all encounters for the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
 
 ```http
-GET /fhir/v3/Encounter?subject=https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
+GET /fhir/v4/Encounter?subject=https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```
@@ -427,7 +427,7 @@ Content-Type: application/json
   "total": 1,
   "entry": [
     {
-      "fullUrl": "https://portal.docare.ch/fhir/v3/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
+      "fullUrl": "https://portal.docare.ch/fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
       "resource": {
         "resourceType": "Encounter",
         "id": "19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
@@ -435,7 +435,7 @@ Content-Type: application/json
           "code": "ambulatory"
         },
         "subject": {
-          "reference": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+          "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
         },
         "period": {
           "start": "2018-11-17",
@@ -451,7 +451,7 @@ This endpoint retrieves all encounters.
 
 ### HTTP Request
 
-`GET /fhir/v3/Encounter`
+`GET /fhir/v4/Encounter`
 
 ### Query Parameters
 
@@ -465,7 +465,7 @@ subject | [reference](http://hl7.org/fhir/STU3/references.html) | The patient pr
 > To get the encounter with id `19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8`, send the following request:
 
 ```http
-GET /fhir/v3/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8 HTTP/1.1
+GET /fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```
@@ -483,7 +483,7 @@ Content-Type: application/json
     "code": "ambulatory"
   },
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+    "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
   },
   "period": {
     "start": "2018-11-17",
@@ -496,7 +496,7 @@ This endpoint retrieves a specific encounter.
 
 ### HTTP Request
 
-`GET /fhir/v3/Encounter/<ID>`
+`GET /fhir/v4/Encounter/<ID>`
 
 ### URL Parameters
 
@@ -510,7 +510,7 @@ ID | The ID of the encounter to retrieve
 > To update the encounter with id `931a68c2-62ca-470e-b1f5-a590577d2936`, send the following request:
 
 ```http
-POST /fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
+POST /fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
 Host: https://portal.docare.ch
@@ -529,13 +529,13 @@ Host: https://portal.docare.ch
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json
-Location: https://portal.docare.ch/fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
+Location: https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
 
 {
   "resourceType": "Encounter",
   "id": "931a68c2-62ca-470e-b1f5-a590577d2936",
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v3/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
+    "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
   },
   "period": {
     "start": "2018-11-12",
@@ -548,7 +548,7 @@ This endpoint updates all encounter data.
 
 ### HTTP Request
 
-`POST /fhir/v3/Encounter/<ID>`
+`POST /fhir/v4/Encounter/<ID>`
 
 ### URL Parameters
 
@@ -573,7 +573,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 > To delete the encounter with id `931a68c2-62ca-470e-b1f5-a590577d2936`, send the following request:
 
 ```http
-DELETE /fhir/v3/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
+DELETE /fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```
@@ -588,7 +588,7 @@ This endpoint deletes an encounter.
 
 ### HTTP Request
 
-`DELETE /fhir/v3/Encounter/<ID>`
+`DELETE /fhir/v4/Encounter/<ID>`
 
 ### URL Parameters
 
@@ -632,7 +632,7 @@ Content-Type: application/json
         "questionnaire": "https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology",
         "authored": "2018-04-25T14:15:33.811244+00:00",
         "subject": {
-          "reference": "https://portal.docare.ch/fhir/v3/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+          "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
         },
         "encounter": {
           "reference": "https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"
@@ -759,7 +759,7 @@ ID | The ID of the questionnaire response to retrieve
 # Errors
 
 ```http
-GET /fhir/v3/Patient/invalid_id HTTP/1.1
+GET /fhir/v4/Patient/invalid_id HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```

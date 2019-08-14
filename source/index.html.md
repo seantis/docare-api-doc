@@ -71,7 +71,6 @@ Host: https://portal.docare.ch
   "resourceType": "Patient",
   "name": [{
     "use": "usual",
-    "text": "Buck Mulligan",
     "family": "Mulligan",
     "given": ["Buck"]
   }],

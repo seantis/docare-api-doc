@@ -394,12 +394,12 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 <tr>
 <td>name</td>
 <td><a href="http://hl7.org/fhir/datatypes.html#HumanName">HumanName</a></td>
-<td>Name(s) associated with the patient</td>
+<td>Name associated with the patient</td>
 </tr>
 <tr>
 <td>telecom</td>
 <td><a href="http://hl7.org/fhir/datatypes.html#ContactPoint">ContactPoint</a></td>
-<td>Contact detail(s) for the patient</td>
+<td>Contact detail for the patient</td>
 </tr>
 <tr>
 <td>birthDate</td>
@@ -412,6 +412,10 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 <td>Gender of the patient: male, female</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+The JSON structure must contain all attributes. Only one name is supported. One contact detail of the type system=phone and use=mobile is supported.
+</aside>
 <h2 id='get-all-patients'>Get All Patients</h2>
 <blockquote>
 <p>To get all patients with the string <code>Mulligan</code> in the name, send the following request:</p>
@@ -594,12 +598,12 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 <tr>
 <td>name</td>
 <td><a href="http://hl7.org/fhir/datatypes.html#HumanName">HumanName</a></td>
-<td>Name(s) associated with the patient</td>
+<td>Name associated with the patient</td>
 </tr>
 <tr>
 <td>telecom</td>
 <td><a href="http://hl7.org/fhir/datatypes.html#ContactPoint">ContactPoint</a></td>
-<td>Contact detail(s) for the patient</td>
+<td>Contact detail for the patient</td>
 </tr>
 <tr>
 <td>birthDate</td>
@@ -614,7 +618,7 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 </tbody></table>
 
 <aside class="notice">
-The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
+The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty. Only one name is supported. One contact detail of the type system=phone and use=mobile is supported.
 </aside>
 <h2 id='delete-a-patient'>Delete a Patient</h2>
 <blockquote>

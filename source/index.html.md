@@ -125,10 +125,14 @@ This endpoint creates a new patient.
 Name | Type | Description
 --------- | ------- | -----------
 resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Patient" constant
-name | [HumanName](http://hl7.org/fhir/datatypes.html#HumanName) | Name(s) associated with the patient
-telecom | [ContactPoint](http://hl7.org/fhir/datatypes.html#ContactPoint) | Contact detail(s) for the patient
+name | [HumanName](http://hl7.org/fhir/datatypes.html#HumanName) | Name associated with the patient
+telecom | [ContactPoint](http://hl7.org/fhir/datatypes.html#ContactPoint) | Contact detail for the patient
 birthDate | [date](http://hl7.org/fhir/datatypes.html#date) | The date of birth for the patient
 gender | [code](http://hl7.org/fhir/datatypes.html#code) | Gender of the patient: male, female
+
+<aside class="notice">
+The JSON structure must contain all attributes. Only one name is supported. One contact detail of the type system=phone and use=mobile is supported.
+</aside>
 
 
 ## Get All Patients
@@ -304,13 +308,13 @@ ID | The ID of the patient to update
 Name | Type | Description
 --------- | ------- | -----------
 resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Patient" constant
-name | [HumanName](http://hl7.org/fhir/datatypes.html#HumanName) | Name(s) associated with the patient
-telecom | [ContactPoint](http://hl7.org/fhir/datatypes.html#ContactPoint) | Contact detail(s) for the patient
+name | [HumanName](http://hl7.org/fhir/datatypes.html#HumanName) | Name associated with the patient
+telecom | [ContactPoint](http://hl7.org/fhir/datatypes.html#ContactPoint) | Contact detail for the patient
 birthDate | [date](http://hl7.org/fhir/datatypes.html#date) | The date of birth for the patient
 gender | [code](http://hl7.org/fhir/datatypes.html#code) | Gender of the patient: male, female
 
 <aside class="notice">
-The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty.
+The JSON structure must contain all attributes (incl. the ones that don't change). Missing attributes are treated as empty. Only one name is supported. One contact detail of the type system=phone and use=mobile is supported.
 </aside>
 
 

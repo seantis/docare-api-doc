@@ -506,6 +506,9 @@ Content-Type: application/json
   "period": {
     "start": "2018-11-17",
     "end": "2018-11-17"
+  },
+  "serviceProvider": {
+    "reference": "https://portal.docare.ch/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"
   }
 }
 ```

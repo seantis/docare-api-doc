@@ -419,6 +419,7 @@ This endpoint creates a new encounter.
 Name | Type | Description
 --------- | ------- | -----------
 resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Encounter" constant
+class | [Coding]https://www.hl7.org/FHIR/datatypes.html#Coding | Classification of patient encounter
 subject | [Reference](http://hl7.org/fhir/references.html) | The patient present at the encounter
 period | [Period](http://hl7.org/fhir/datatypes.html#Period) | The start and end time of the encounter
 
@@ -585,6 +586,7 @@ ID | The ID of the encounter to update
 Name | Type | Description
 --------- | ------- | -----------
 resourceType | [string](http://hl7.org/fhir/datatypes.html#string) | "Encounter" constant
+class | [Coding]https://www.hl7.org/FHIR/datatypes.html#Coding | Classification of patient encounter
 period | [Period](http://hl7.org/fhir/datatypes.html#Period) | The start and end time of the encounter
 
 <aside class="notice">

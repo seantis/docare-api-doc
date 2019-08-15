@@ -94,6 +94,10 @@ Location: https://portal.docare.ch/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7
 {
   "resourceType": "Patient",
   "id": "5b9613fc-43ef-4f90-bf10-9cbe7451fe02",
+  "identifier": [{
+      "system": "https://portal.docare.ch/concepts/patient_number",
+      "value": "103"
+  }],
   "name": [{
     "use": "usual",
     "text": "Buck Mulligan",
@@ -199,6 +203,10 @@ Content-Type: application/json
 {
   "resourceType": "Patient",
   "id": "2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
+  "identifier": [{
+      "system": "https://portal.docare.ch/concepts/patient_number",
+      "value": "103"
+  }],
   "name": [{
     "use": "usual",
     "text": "Buck Mulligan",

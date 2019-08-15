@@ -538,6 +538,9 @@ Host: https://portal.docare.ch
 
 {
   "resourceType": "Encounter",
+  "class": {
+    "code": "AMB"
+  },
   "period": {
     "start": "2018-11-12",
     "end": "2018-11-12"

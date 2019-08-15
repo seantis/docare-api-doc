@@ -275,6 +275,10 @@ Content-Type: application/json
 {
   "resourceType": "Patient",
   "id": "5b9613fc-43ef-4f90-bf10-9cbe7451fe02",
+  "identifier": [{
+      "system": "https://portal.docare.ch/concepts/patient_number",
+      "value": "103"
+  }],
   "name": [{
     "use": "usual",
     "text": "Buck Mulligan",

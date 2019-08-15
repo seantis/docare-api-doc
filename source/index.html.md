@@ -631,7 +631,7 @@ The docare.ch FHIR [QuestionnaireResponse](https://www.hl7.org/fhir/questionnair
 > To get all questionnaire responses for the patient with id `2f5da8c2-cbf1-42d1-9d7a-165f3ed80541`, send the following request:
 
 ```http
-GET /fhir/v4/QuestionnaireResponse?subject=https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
+GET /fhir/v4/QuestionnaireResponse?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Host: https://portal.docare.ch
 ```

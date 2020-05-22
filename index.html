@@ -304,12 +304,12 @@
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
-client_id: "clientid"
-client_secret: "clientsecret"
+client_id: "{clientid}"
+client_secret: "{clientsecret}"
 grant_type: "client_credentials"
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>clientid</code> and <code>clientsecret</code> with your OAuth client id and secret.</p>
+<p>Make sure to replace <code>{clientid}</code> and <code>{clientsecret}</code> with your OAuth client id and secret.</p>
 
 <p>The above request returns the following response:</p>
 </blockquote>
@@ -334,7 +334,7 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 <h1 id='patient'>Patient</h1>
 <p>The docare.ch FHIR <a href="http://hl7.org/fhir/patient.html">Patient</a> resource covers demographics and other administrative information about a patient.</p>
 <h2 id='create-a-patient'>Create a Patient</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Patient</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
@@ -429,7 +429,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 <p>To get all patients with the string <code>Mulligan</code> in the name, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Patient?name=Mulligan</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -483,7 +483,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 <p>To get the patient with id <code>2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -530,7 +530,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 </tr>
 </tbody></table>
 <h2 id='update-a-patient'>Update a Patient</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
@@ -637,7 +637,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To delete the patient with id <code>5b9613fc-43ef-4f90-bf10-9cbe7451fe02</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -667,7 +667,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To create a new encounter for the patient with id <code>d0a31764-6030-4284-984e-3bd967106ea4</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Encounter</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
@@ -748,7 +748,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To get all encounters for the patient with id <code>2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Encounter?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -804,7 +804,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To get the encounter with id <code>19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -851,7 +851,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To update the encounter with id <code>931a68c2-62ca-470e-b1f5-a590577d2936</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
@@ -933,7 +933,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To delete the encounter with id <code>931a68c2-62ca-470e-b1f5-a590577d2936</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -963,7 +963,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To get all questionnaire responses for the patient with id <code>2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/QuestionnaireResponse?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -1018,7 +1018,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <p>To get the questionnaire response with id <code>d605cd56-c554-4cbd-9c6b-8d7b16903443</code>, send the following request:</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
@@ -1113,7 +1113,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Patient/invalid_id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer {access_token}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>

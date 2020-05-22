@@ -16,8 +16,8 @@ Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](htt
 
 # API Endpoint Base URL
 
-Testing / Staging: https://msd-test.seantis.ch
-Production: https://portal.docare.ch
+- Testing / Staging: https://msd-test.seantis.ch
+- Production: https://portal.docare.ch
 
 # Authentication
 

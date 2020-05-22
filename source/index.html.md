@@ -28,12 +28,12 @@ POST /oauth/v2/token HTTP/1.1
 Content-Type: multipart/form-data
 Host: {endpoint_url}
 
-client_id: "clientid"
-client_secret: "clientsecret"
+client_id: "{clientid}"
+client_secret: "{clientsecret}"
 grant_type: "client_credentials"
 ```
 
-> Make sure to replace `clientid` and `clientsecret` with your OAuth client id and secret.
+> Make sure to replace `{clientid}` and `{clientsecret}` with your OAuth client id and secret.
 
 > The above request returns the following response:
 
@@ -68,7 +68,7 @@ The docare.ch FHIR [Patient](http://hl7.org/fhir/patient.html) resource covers d
 
 ```http
 POST /fhir/v4/Patient HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Content-Type: application/json
 Host: {endpoint_url}
 
@@ -146,7 +146,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 
 ```http
 GET /fhir/v4/Patient?name=Mulligan HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -199,7 +199,7 @@ name | [string](http://hl7.org/fhir/datatypes.html#string) | A portion of the fa
 
 ```http
 GET /fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -249,7 +249,7 @@ ID | The ID of the patient to retrieve
 
 ```http
 POST /fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Content-Type: application/json
 Host: {endpoint_url}
 
@@ -333,7 +333,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 
 ```http
 DELETE /fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -367,7 +367,7 @@ The docare.ch FHIR [Encounter](http://hl7.org/fhir/encounter.html) resource cove
 
 ```http
 POST /fhir/v4/Encounter HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Content-Type: application/json
 Host: {endpoint_url}
 
@@ -435,7 +435,7 @@ period | [Period](http://hl7.org/fhir/datatypes.html#Period) | The start and end
 
 ```http
 GET /fhir/v4/Encounter?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -490,7 +490,7 @@ subject | [reference](http://hl7.org/fhir/references.html) | The patient present
 
 ```http
 GET /fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -538,7 +538,7 @@ ID | The ID of the encounter to retrieve
 
 ```http
 POST /fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Content-Type: application/json
 Host: {endpoint_url}
 
@@ -605,7 +605,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 
 ```http
 DELETE /fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -639,7 +639,7 @@ The docare.ch FHIR [QuestionnaireResponse](https://www.hl7.org/fhir/questionnair
 
 ```http
 GET /fhir/v4/QuestionnaireResponse?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -693,7 +693,7 @@ subject | [reference](http://hl7.org/fhir/references.html) | The patient of the 
 
 ```http
 GET /fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443 HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 
@@ -791,7 +791,7 @@ ID | The ID of the questionnaire response to retrieve
 
 ```http
 GET /fhir/v4/Patient/invalid_id HTTP/1.1
-Authorization: Bearer add72ae475214adc83ea227c21fee0e5
+Authorization: Bearer {access_token}
 Host: {endpoint_url}
 ```
 

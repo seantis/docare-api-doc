@@ -293,8 +293,8 @@
 <p>Welcome to the docare.ch API! You can use our API to access docare.ch <a href="http://hl7.org/fhir/">FHIR</a> API endpoints, which can get information on patients and encounters in our database.</p>
 <h1 id='api-endpoint-url'>API Endpoint URL</h1>
 <ul>
-<li>Testing / Staging: https://msd-test.seantis.ch</li>
-<li>Production: https://portal.docare.ch</li>
+<li>Testing / Staging: <code>https://msd-test.seantis.ch</code></li>
+<li>Production: <code>https://portal.docare.ch</code></li>
 </ul>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
@@ -302,7 +302,7 @@
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/oauth/v2/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
 client_id: "clientid"
 client_secret: "clientsecret"
@@ -336,7 +336,7 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 <h2 id='create-a-patient'>Create a Patient</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Patient</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
@@ -359,13 +359,13 @@ You must replace <code>94b760b2dff748f992dc8e52e9a5bd51</code> with the access t
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Location</span><span class="p">:</span> <span class="s">https://portal.docare.ch/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">{endpoint_url}/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b9613fc-43ef-4f90-bf10-9cbe7451fe02"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/concepts/patient_number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/concepts/patient_number"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="w">
   </span><span class="p">}],</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -430,7 +430,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Patient?name=Mulligan</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -444,7 +444,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
   </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fullUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fullUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="p">,</span><span class="w">
@@ -484,7 +484,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -496,7 +496,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/concepts/patient_number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/concepts/patient_number"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="w">
   </span><span class="p">}],</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -532,7 +532,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 <h2 id='update-a-patient'>Update a Patient</h2><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
@@ -561,7 +561,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b9613fc-43ef-4f90-bf10-9cbe7451fe02"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/concepts/patient_number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/concepts/patient_number"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="w">
   </span><span class="p">}],</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -638,7 +638,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -669,7 +669,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Encounter</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
@@ -677,7 +677,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12"</span><span class="p">,</span><span class="w">
@@ -690,7 +690,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Location</span><span class="p">:</span> <span class="s">https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">{endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
@@ -700,14 +700,14 @@ The JSON structure must contain all attributes (incl. the ones that don't change
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"serviceProvider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -749,7 +749,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Encounter?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -763,7 +763,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
   </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fullUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fullUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8"</span><span class="p">,</span><span class="w">
@@ -771,7 +771,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
           </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
+          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-17"</span><span class="p">,</span><span class="w">
@@ -805,7 +805,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -820,14 +820,14 @@ The JSON structure must contain all attributes (incl. the ones that don't change
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMB"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-17"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-17"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"serviceProvider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -853,7 +853,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
@@ -871,13 +871,13 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Location</span><span class="p">:</span> <span class="s">https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">{endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-12"</span><span class="p">,</span><span class="w">
@@ -934,7 +934,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -964,7 +964,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/QuestionnaireResponse?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -978,18 +978,18 @@ The JSON structure must contain all attributes (incl. the ones that don't change
   </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fullUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fullUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d605cd56-c554-4cbd-9c6b-8d7b16903443"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Questionnaire/history_dermatology"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"authored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-25T14:15:33.811244+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
+          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"encounter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="w">
+          </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1019,7 +1019,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following response:</p>
@@ -1040,12 +1040,12 @@ The JSON structure must contain all attributes (incl. the ones that don't change
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"authored"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-12T09:16:03.157753+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"encounter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"questionnaire"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{endpoint_url}/fhir/v4/Questionnaire/history_dermatology"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"linkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ailment"</span><span class="p">,</span><span class="w">
@@ -1114,7 +1114,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 </tbody></table>
 <h1 id='errors'>Errors</h1><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/fhir/v4/Patient/invalid_id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer add72ae475214adc83ea227c21fee0e5</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">https://portal.docare.ch</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">{endpoint_url}</span>
 </code></pre>
 <blockquote>
 <p>The above request returns the following 404 response:</p>

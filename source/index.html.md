@@ -16,8 +16,8 @@ Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](htt
 
 # API Endpoint URL
 
-- Testing / Staging: https://msd-test.seantis.ch
-- Production: https://portal.docare.ch
+- Testing / Staging: `https://msd-test.seantis.ch`
+- Production: `https://portal.docare.ch`
 
 # Authentication
 
@@ -26,7 +26,7 @@ Welcome to the docare.ch API! You can use our API to access docare.ch [FHIR](htt
 ```http
 POST /oauth/v2/token HTTP/1.1
 Content-Type: multipart/form-data
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 
 client_id: "clientid"
 client_secret: "clientsecret"
@@ -70,7 +70,7 @@ The docare.ch FHIR [Patient](http://hl7.org/fhir/patient.html) resource covers d
 POST /fhir/v4/Patient HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 
 {
   "resourceType": "Patient",
@@ -94,13 +94,13 @@ Host: https://portal.docare.ch
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json
-Location: https://portal.docare.ch/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02
+Location: {endpoint_url}/fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02
 
 {
   "resourceType": "Patient",
   "id": "5b9613fc-43ef-4f90-bf10-9cbe7451fe02",
   "identifier": [{
-      "system": "https://portal.docare.ch/concepts/patient_number",
+      "system": "{endpoint_url}/concepts/patient_number",
       "value": "103"
   }],
   "name": [{
@@ -147,7 +147,7 @@ The JSON structure must contain all attributes. Only one name is supported. One 
 ```http
 GET /fhir/v4/Patient?name=Mulligan HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -162,7 +162,7 @@ Content-Type: application/json
   "total": 1,
   "entry": [
     {
-      "fullUrl": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
+      "fullUrl": "{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
       "resource": {
         "resourceType": "Patient",
         "id": "2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
@@ -200,7 +200,7 @@ name | [string](http://hl7.org/fhir/datatypes.html#string) | A portion of the fa
 ```http
 GET /fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -213,7 +213,7 @@ Content-Type: application/json
   "resourceType": "Patient",
   "id": "2f5da8c2-cbf1-42d1-9d7a-165f3ed80541",
   "identifier": [{
-      "system": "https://portal.docare.ch/concepts/patient_number",
+      "system": "{endpoint_url}/concepts/patient_number",
       "value": "103"
   }],
   "name": [{
@@ -251,7 +251,7 @@ ID | The ID of the patient to retrieve
 POST /fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 
 {
   "resourceType": "Patient",
@@ -281,7 +281,7 @@ Content-Type: application/json
   "resourceType": "Patient",
   "id": "5b9613fc-43ef-4f90-bf10-9cbe7451fe02",
   "identifier": [{
-      "system": "https://portal.docare.ch/concepts/patient_number",
+      "system": "{endpoint_url}/concepts/patient_number",
       "value": "103"
   }],
   "name": [{
@@ -334,7 +334,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 ```http
 DELETE /fhir/v4/Patient/5b9613fc-43ef-4f90-bf10-9cbe7451fe02 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -369,7 +369,7 @@ The docare.ch FHIR [Encounter](http://hl7.org/fhir/encounter.html) resource cove
 POST /fhir/v4/Encounter HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 
 {
   "resourceType": "Encounter",
@@ -377,7 +377,7 @@ Host: https://portal.docare.ch
     "code": "AMB"
   },
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
+    "reference": "{endpoint_url}/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
   },
   "period": {
     "start": "2018-11-12",
@@ -391,7 +391,7 @@ Host: https://portal.docare.ch
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json
-Location: https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
+Location: {endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
 
 {
   "resourceType": "Encounter",
@@ -401,14 +401,14 @@ Location: https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a59
     "code": "AMB"
   },
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
+    "reference": "{endpoint_url}/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
   },
   "period": {
     "start": "2018-11-12",
     "end": "2018-11-12"
   },
   "serviceProvider": {
-    "reference": "https://portal.docare.ch/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"
+    "reference": "{endpoint_url}/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"
   }
 }
 ```
@@ -436,7 +436,7 @@ period | [Period](http://hl7.org/fhir/datatypes.html#Period) | The start and end
 ```http
 GET /fhir/v4/Encounter?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -451,7 +451,7 @@ Content-Type: application/json
   "total": 1,
   "entry": [
     {
-      "fullUrl": "https://portal.docare.ch/fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
+      "fullUrl": "{endpoint_url}/fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
       "resource": {
         "resourceType": "Encounter",
         "id": "19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8",
@@ -459,7 +459,7 @@ Content-Type: application/json
           "code": "AMB"
         },
         "subject": {
-          "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+          "reference": "{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
         },
         "period": {
           "start": "2018-11-17",
@@ -491,7 +491,7 @@ subject | [reference](http://hl7.org/fhir/references.html) | The patient present
 ```http
 GET /fhir/v4/Encounter/19d4c5a3-fa8d-4aa0-aa11-f9a1f31656d8 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -507,14 +507,14 @@ Content-Type: application/json
     "code": "AMB"
   },
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+    "reference": "{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
   },
   "period": {
     "start": "2018-11-17",
     "end": "2018-11-17"
   },
   "serviceProvider": {
-    "reference": "https://portal.docare.ch/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"
+    "reference": "{endpoint_url}/fhir/v4/Organization/04d2256f-8424-432d-80fc-af58e10dcfe1"
   }
 }
 ```
@@ -540,7 +540,7 @@ ID | The ID of the encounter to retrieve
 POST /fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
 Content-Type: application/json
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 
 {
   "resourceType": "Encounter",
@@ -559,13 +559,13 @@ Host: https://portal.docare.ch
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json
-Location: https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
+Location: {endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936
 
 {
   "resourceType": "Encounter",
   "id": "931a68c2-62ca-470e-b1f5-a590577d2936",
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
+    "reference": "{endpoint_url}/fhir/v4/Patient/d0a31764-6030-4284-984e-3bd967106ea4"
   },
   "period": {
     "start": "2018-11-12",
@@ -606,7 +606,7 @@ The JSON structure must contain all attributes (incl. the ones that don't change
 ```http
 DELETE /fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -640,7 +640,7 @@ The docare.ch FHIR [QuestionnaireResponse](https://www.hl7.org/fhir/questionnair
 ```http
 GET /fhir/v4/QuestionnaireResponse?subject=Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -655,18 +655,18 @@ Content-Type: application/json
   "total": 1,
   "entry": [
     {
-      "fullUrl": "https://portal.docare.ch/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443",
+      "fullUrl": "{endpoint_url}/fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443",
       "resource": {
         "resourceType": "Encounter",
         "id": "d605cd56-c554-4cbd-9c6b-8d7b16903443",
         "status": "completed",
-        "questionnaire": "https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology",
+        "questionnaire": "{endpoint_url}/fhir/v4/Questionnaire/history_dermatology",
         "authored": "2018-04-25T14:15:33.811244+00:00",
         "subject": {
-          "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+          "reference": "{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
         },
         "encounter": {
-          "reference": "https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"
+          "reference": "{endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"
         }
       }
     }
@@ -694,7 +694,7 @@ subject | [reference](http://hl7.org/fhir/references.html) | The patient of the 
 ```http
 GET /fhir/v4/QuestionnaireResponse/d605cd56-c554-4cbd-9c6b-8d7b16903443 HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following response:
@@ -716,12 +716,12 @@ Content-Type: application/json
   "status": "completed",
   "authored": "2019-07-12T09:16:03.157753+00:00",
   "subject": {
-    "reference": "https://portal.docare.ch/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
+    "reference": "{endpoint_url}/fhir/v4/Patient/2f5da8c2-cbf1-42d1-9d7a-165f3ed80541"
   },
   "encounter": {
-    "reference": "https://portal.docare.ch/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"
+    "reference": "{endpoint_url}/fhir/v4/Encounter/931a68c2-62ca-470e-b1f5-a590577d2936"
   },
-  "questionnaire": "https://portal.docare.ch/fhir/v4/Questionnaire/history_dermatology",
+  "questionnaire": "{endpoint_url}/fhir/v4/Questionnaire/history_dermatology",
   "item": [
     {
       "linkId": "ailment",
@@ -792,7 +792,7 @@ ID | The ID of the questionnaire response to retrieve
 ```http
 GET /fhir/v4/Patient/invalid_id HTTP/1.1
 Authorization: Bearer add72ae475214adc83ea227c21fee0e5
-Host: https://portal.docare.ch
+Host: {endpoint_url}
 ```
 
 > The above request returns the following 404 response:

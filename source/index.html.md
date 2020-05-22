@@ -33,7 +33,7 @@ client_secret: "{clientsecret}"
 grant_type: "client_credentials"
 ```
 
-> Make sure to replace `{clientid}` and `{clientsecret}` with your OAuth client id and secret.
+> Make sure to replace `{clientid}` and `{clientsecret}` with your OAuth client id and secret and to use the correct API endpoint url (staging or production).
 
 > The above request returns the following response:
 
